@@ -1,0 +1,84 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.18
+Date: 03. 02. 2023
+  Bugfixes:
+    - Fixed occasional game crash when player dies with more items than the base inventory amount
+    - Properly reset bonus size on death, which should fix weird inventory behavior after dying
+---------------------------------------------------------------------------------------------------
+Version: 0.0.17
+Date: 01. 12. 2022
+  Bugfixes:
+    - Fixed reducing the inventory size when that would spill items in most situations
+---------------------------------------------------------------------------------------------------
+Version: 0.0.16
+Date: 07. 02. 2022
+  Changes:
+    - Added compatibility for minime mod
+---------------------------------------------------------------------------------------------------
+Version: 0.0.15
+Date: 23. 11. 2020
+  Changes:
+    - Support for Factorio 1.1
+---------------------------------------------------------------------------------------------------
+Version: 0.0.14
+Date: 02. 02. 2020
+  Changes:
+    - Support for 0.18
+---------------------------------------------------------------------------------------------------
+Version: 0.0.13
+Date: 12. 11. 2019
+  Bugfixes:
+    - Fixed accidental inventory spill when picking up the last stack of an item when the player's inventory is full
+---------------------------------------------------------------------------------------------------
+Version: 0.0.12
+Date: 03. 05. 2019
+  Bugfixes:
+    - Updated use of defines for the player's inventory (for 0.17.35 changes)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.11
+Date: 03. 10. 2019
+  Changes:
+    - Fixed accidental print spam
+    - The inventory now no longer changes when any UI is open, to avoid scrolling to the top
+---------------------------------------------------------------------------------------------------
+Version: 0.0.10
+Date: 03. 01. 2019
+  Changes:
+    - Support for 0.17
+      (We don't speak of 0.0.9. AKA, I don't use source control on this mod and have *no idea* what I changed in it)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.8
+Date: 01. 01. 2018
+  Changes:
+    - Support for 0.16
+---------------------------------------------------------------------------------------------------
+Version: 0.0.7
+Date: 08. 01. 2017
+  Changes:
+    - Fixed crash in sandbox or when deleting the character
+---------------------------------------------------------------------------------------------------
+Version: 0.0.6
+Date: 05. 01. 2017
+  Changes:
+    - Support for 0.15
+---------------------------------------------------------------------------------------------------
+Version: 0.0.5
+Date: 05. 01. 2017
+  Changes:
+    - Fixed player.print() that was left behind
+    - Added null check to on_configuration_changed
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 05. 01. 2017
+  Changes:
+    - Made on_tick check less frequent (every 1 second instead of every .1 of a second) (Whoops)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.3 
+Date: 04. 01. 2017
+  Changes:
+    - Mod no longer changes inventory size while the inventory is open (to prevent the scrolling reset) (Thanks Ranakastrasz for the tip)
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 04. 01. 2017
+  Changes:
+    - Added check to see if bonus slots would be less than 0 to prevent game crash
