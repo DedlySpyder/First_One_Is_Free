@@ -1,8 +1,8 @@
 local MINIME_REMOTE_ACTIVE = false
 
 script.on_init(function()
-	global.inventory_slots = global.inventory_slots or {}
-	global.opened_changes = global.opened_changes or {}
+	storage.inventory_slots = storage.inventory_slots or {}
+	storage.opened_changes = storage.opened_changes or {}
 	checkForRemotes()
 end)
 
@@ -13,7 +13,7 @@ end)
 script.on_configuration_changed(function(event)
 	local FoF = event.mod_changes["First_One_Is_Free"]
 	if FoF and FoF.old_version == "0.0.2" then
-		global.opened_changes = global.opened_changes or {}
+		storage.opened_changes = storage.opened_changes or {}
 	end
 	checkForRemotes()
 end)
@@ -24,7 +24,7 @@ end
 
 script.on_event(defines.events.on_player_died, function(event)
 	local player = game.players[event.player_index]
-	global.inventory_slots[player.name] = 0
+	storage.inventory_slots[player.name] = 0
 end)
 
 script.on_event(defines.events.on_player_main_inventory_changed, function(event)
@@ -33,7 +33,7 @@ script.on_event(defines.events.on_player_main_inventory_changed, function(event)
 		if isSafeToChange(player) then
 			changeInventorySlots(player)
 		else
-			global.opened_changes[player.name] = true
+			storage.opened_changes[player.name] = true
 		end
 	end
 end)
@@ -49,7 +49,7 @@ end)
 
 script.on_event(defines.events.on_tick, function(event)
 	if game.tick % 60 == 6 then
-		for playerName, flag in pairs(global.opened_changes) do
+		for playerName, flag in pairs(storage.opened_changes) do
 			if flag then
 				local player = game.players[playerName]
 				if player and 
@@ -58,7 +58,7 @@ script.on_event(defines.events.on_tick, function(event)
 				   player.character and 
 				   isSafeToChange(player) then
 					if changeInventorySlots(player) then
-						global.opened_changes[playerName] = false
+						storage.opened_changes[playerName] = false
 					end
 				end
 			end
@@ -90,7 +90,7 @@ function changeInventorySlots(player)
 		itemCount = itemCount + 1
 	end
 
-	local currentSlots = global.inventory_slots[player.name] or 0
+	local currentSlots = storage.inventory_slots[player.name] or 0
 	local change = itemCount - currentSlots
 	local newBonus = player.character_inventory_slots_bonus + change
 
@@ -105,7 +105,7 @@ function changeInventorySlots(player)
 		emitInventoryResized(player)
 	end
 	
-	global.inventory_slots[player.name] = itemCount
+	storage.inventory_slots[player.name] = itemCount
 	return true
 end
 
