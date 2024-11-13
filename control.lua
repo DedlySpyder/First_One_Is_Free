@@ -75,6 +75,10 @@ end
 
 function changeInventorySlots(player)
 	local main_inventory = player.get_main_inventory()
+	if main_inventory == nil then
+    return false
+	end
+	
 	local contents = main_inventory.get_contents()
 	local cursorItemName = getPlayerCursorStackName(player)
 	local itemCount = 0
